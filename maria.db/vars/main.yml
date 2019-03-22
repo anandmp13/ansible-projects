@@ -1,0 +1,20 @@
+---
+ mariadb_packages:
+  - MariaDB-server
+  - MariaDB-client
+  - MariaDB-common
+  - rsync
+  - lsof
+  - MySQL-python
+  - firewalld
+  - php
+  - php-mysql
+   
+ root_password:
+  - password
+ mariadb_node: 
+  - node1
+ galera_clusternodes: "{{ groups['galera-cluster'] | map('extract', hostvars, ['ansiblenode']) | join(',') }}"
+...
+
+# vars file for maria.db

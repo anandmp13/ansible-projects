@@ -1,0 +1,4 @@
+---
+ansible_eth0:
+     ipv4:
+        address: 

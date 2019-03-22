@@ -1,0 +1,8 @@
+---
+ - name: "add the httpd service to firewaal"
+   firewalld:
+      service: http
+      permanent: yes
+      state: enabled
+...
+

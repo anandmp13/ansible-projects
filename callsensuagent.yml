@@ -1,0 +1,9 @@
+---
+ - hosts: all
+   tasks: 
+   
+ - hosts: sensu_agent
+   name: install and template
+   roles:
+    - sensu.agent
+...

@@ -1,0 +1,58 @@
+---
+##
+## general configuration
+###
+state-dir: "/var/lib/sensu/sensu-backend"
+#
+###
+## agent configuration
+###
+agent-host: "0.0.0.0" # listen on all IPv4 and IPv6 addresses
+agent-port: 8081
+#
+###
+## api configuration
+###
+api-listen-address: "0.0.0.0:8080" # listen on all IPv4 and IPv6 addresses
+api-url: "http://{{ ansible_eth0['ipv4']['address'] }}:8080"
+#
+###
+## ssl configuration
+###
+##cert-file: "/path/to/ssl/cert.pem"
+##key-file: "/path/to/ssl/key.pem"
+##trusted-ca-file: "/path/to/trusted-certificate-authorities.pem"
+##insecure-skip-tls-verify: false
+#
+
+##
+## store configuration
+###
+
+#{% for i in groups['all']  %}
+#{{ hostvars[i]['ansible_facts']['default_ipv4']['address'] }} {{ hostvars[i]['ansible_facts']['hostname'] }}
+#{% endfor %}
+
+
+etcd-advertise-client-urls: "http://{{ ansible_eth0['ipv4']['address'] }}:2379"
+etcd-listen-client-urls: "http://{{ ansible_eth0['ipv4']['address'] }}:2379"
+etcd-listen-peer-urls: "http://0.0.0.0:2380"
+etcd-initial-cluster: "{{ hostname1 }}=http://{{ node1 }}:2380,{{ hostname2 }}=http://{{ node2 }}:2380,{{ hostname3 }}=http://{{ node3 }}:2380"
+etcd-initial-advertise-peer-urls: "http://{{ ansible_eth0['ipv4']['address'] }}:2380"
+etcd-initial-cluster-state: "new"
+etcd-initial-cluster-token: ""
+etcd-name: "{{ ansible_hostname }}"
+##
+## dashboard configuration
+###
+dashboard-host: "0.0.0.0" # listen on all IPv4 and IPv6 addresses
+dashboard-port: 3000
+#
+###
+## other
+###
+cache-dir: "/var/cache/sensu/sensu-backend"
+config-file: "/etc/sensu/backend.yml"
+##debug: false
+##deregistration-handler: ""
+log-level: "warn"

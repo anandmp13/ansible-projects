@@ -1,0 +1,9 @@
+---
+ - name: "installing {{ package }} package"
+   yum:
+     name: "{{ package }}"
+     state: present
+
+ - yum:
+     name: firewalld
+     state: present

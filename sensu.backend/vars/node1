@@ -1,0 +1,5 @@
+---
+node1_hostname: node1.example.com
+node1_ipaddr: 192.23232.3232.323
+node2_hostname: node2
+node

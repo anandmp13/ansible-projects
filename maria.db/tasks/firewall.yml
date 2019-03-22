@@ -1,0 +1,20 @@
+---
+ - name: mysql
+   firewalld:
+     service: mysql
+     permanent: yes
+     state: enabled
+ - name: replication traffic 4567/8
+   firewalld:
+     port: 4567-4568/tcp
+     permanent: true
+     state: enabled
+ - name: port3306
+   firewalld:
+     port: 3306/tcp
+     permanent: true
+     state: enabled
+ - name: Restart the firewalld
+   service:
+     name: firewalld
+     state: restarted

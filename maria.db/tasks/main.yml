@@ -1,0 +1,8 @@
+---
+ - import_tasks: package.yml
+# - import_tasks: service.yml
+# - import_tasks: stopservice.yml
+ - import_tasks: config.yml
+# - import_tasks: rootpassword.yml
+...
+# tasks file for maria.db

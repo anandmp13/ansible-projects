@@ -1,0 +1,7 @@
+---
+ - name: "add the index.j2 to index.html"
+   template:
+     src: index.j2
+     dest: "{{ webpage }}"
+   notify: restart_service
+...

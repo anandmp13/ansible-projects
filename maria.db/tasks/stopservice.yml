@@ -1,0 +1,6 @@
+---
+ - name: stop service
+   service:
+     name: mariadb
+     state: stopped
+

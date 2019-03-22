@@ -1,0 +1,28 @@
+---
+ - hosts: all
+   tasks: 
+   
+ - hosts: sensu_backend
+   name: install and template
+   roles:
+    - sensu.backend
+
+ - hosts: sensu_agent
+   name: install and template
+   roles:
+    - sensu.agent
+
+ - hosts: sensu33
+   tasks: 
+   - name: configure
+     shell: "sensuctl configure --url 'http://{{ ansible_default_ipv4.address }}:8080' --username 'admin' --password 'P@ssw0rd!' --namespace 'default' --format 'tabular' -n"
+   
+
+#   vars:
+#    - username: admin
+#    - password: P@ssw0rd!
+#vars_prompt:
+#   - name: course
+#     prompt: "Enter the corse"
+
+...

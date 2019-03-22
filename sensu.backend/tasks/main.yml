@@ -1,0 +1,5 @@
+---
+ - import_tasks: package.yml
+ - import_tasks: service.yml
+
+# tasks file for sensu.backend

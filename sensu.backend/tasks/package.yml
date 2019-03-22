@@ -1,0 +1,27 @@
+---
+ - name: Check that the checking conf file exists exists
+   stat:
+     path: /usr/share/doc/sensu-go-backend-5.3.0/backend.yml.example
+   register: p
+
+ - name: repo
+   shell: "curl -s https://packagecloud.io/install/repositories/sensu/stable/script.rpm.sh | sudo bash"
+   when: p.stat.exists == False
+   
+ - name: package
+   package:
+     name: sensu-go-backend
+     state: present
+
+ - name: template
+   template:
+     src: backend.yml.j2
+     dest: /etc/sensu/backend.yml
+
+ - name: package
+   package:
+     name: sensu-go-cli
+     state: present   
+
+
+

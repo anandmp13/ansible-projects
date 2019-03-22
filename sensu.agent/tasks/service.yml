@@ -1,0 +1,6 @@
+---
+ - name: restart
+   service:
+    name: sensu-agent
+    state: restarted
+...

@@ -1,0 +1,11 @@
+---
+- name: trial
+  hosts: sensu21
+  tasks:
+   - debug:
+        msg: "var=hostvars.sensu21"       
+     with_items:
+      - sensu21
+      - sensu22
+      - sensu23
+       

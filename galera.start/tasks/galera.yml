@@ -1,0 +1,27 @@
+---
+ - name: CheckStat
+   shell: "netstat -tulpn | grep mysqld"
+   register: trial
+   become: true
+   ignore_errors: yes
+
+ - name: start galera
+   command: galera_new_cluster
+   when: trial.stdout == ""
+# 
+ - name: Check if root password is set
+   shell: >
+    mysqladmin -u root status
+   changed_when: false
+   failed_when: false
+   register: root_pwd_check
+   tags: mariadb
+
+ 
+ - name: change root password
+   shell: "mysqladmin -u root --password='' password 'password'"
+   when: root_pwd_check.rc == 0
+   tags: mariadb
+...
+   
+  

@@ -1,0 +1,11 @@
+---
+ - name: "start the service {{ service }}"
+   service:                               
+     name: "{{ service }}"
+     state: started
+     enabled: yes
+ -  service:
+     name: firewalld
+     state: started
+     enabled: yes
+...

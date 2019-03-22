@@ -1,0 +1,9 @@
+---
+ - hosts: all
+   roles: 
+      - maria.db
+ - hosts: galera 
+   roles:
+      - galera.start
+   
+...

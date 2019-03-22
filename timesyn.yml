@@ -1,0 +1,11 @@
+---
+ - name: "timesync"
+   hosts: node1
+   vars: 
+     timesync_ntp_servers:
+       - hostname: 0.asia.pool.ntp.org 
+         iburst: yes 
+     timesync_ntp_provider: chrony
+   roles:
+    - rhel-system-roles.timesync 
+...

@@ -1,0 +1,7 @@
+---
+ package: httpd
+ service: httpd
+ template: index.j2
+ webpage: /var/www//html/index.html
+...
+# vars file for apache.web
