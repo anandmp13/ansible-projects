@@ -1,5 +1,6 @@
-Role Name
+Apache.web
 =========
+Basic inatallation and configuration ofapache and other simple services
 
 A brief description of the role goes here.
 

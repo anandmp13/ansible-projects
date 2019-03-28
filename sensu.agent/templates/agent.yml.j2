@@ -6,9 +6,9 @@
 #namespace: "default"
 #subscriptions: ""
 backend-url:
-  - "ws://{{ node1 }}:8081"
-  - "ws://{{ node2 }}:8081"
-  - "ws://{{ node3 }}:8081"
+  - "ws://{{ hostvars[groups['sensu_backend'][0]]['ansible_eth0']['ipv4']['address'] }}:8081"
+  - "ws://{{ hostvars[groups['sensu_backend'][1]]['ansible_eth0']['ipv4']['address'] }}:8081"
+  - "ws://{{ hostvars[groups['sensu_backend'][2]]['ansible_eth0']['ipv4']['address'] }}:8081"
 ##
 # authentication configuration
 ##

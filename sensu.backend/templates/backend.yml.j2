@@ -32,12 +32,13 @@ api-url: "http://{{ ansible_eth0['ipv4']['address'] }}:8080"
 #{% for i in groups['all']  %}
 #{{ hostvars[i]['ansible_facts']['default_ipv4']['address'] }} {{ hostvars[i]['ansible_facts']['hostname'] }}
 #{% endfor %}
-
+#"{{ hostvars[groups['sensu_backend'][1]]['ansible_eth0']['ipv4']['address'] }}"
+#"{{ groups['sensu_backend'][2] }}"
 
 etcd-advertise-client-urls: "http://{{ ansible_eth0['ipv4']['address'] }}:2379"
 etcd-listen-client-urls: "http://{{ ansible_eth0['ipv4']['address'] }}:2379"
 etcd-listen-peer-urls: "http://0.0.0.0:2380"
-etcd-initial-cluster: "{{ hostname1 }}=http://{{ node1 }}:2380,{{ hostname2 }}=http://{{ node2 }}:2380,{{ hostname3 }}=http://{{ node3 }}:2380"
+etcd-initial-cluster: "{{ hostvars[groups['sensu_backend'][0]]['ansible_hostname'] }}=http://{{ hostvars[groups['sensu_backend'][0]]['ansible_eth0']['ipv4']['address'] }}:2380,{{ hostvars[groups['sensu_backend'][1]]['ansible_hostname'] }}=http://{{ hostvars[groups['sensu_backend'][1]]['ansible_eth0']['ipv4']['address'] }}:2380,{{ hostvars[groups['sensu_backend'][2]]['ansible_hostname'] }}=http://{{ hostvars[groups['sensu_backend'][2]]['ansible_eth0']['ipv4']['address'] }}:2380"
 etcd-initial-advertise-peer-urls: "http://{{ ansible_eth0['ipv4']['address'] }}:2380"
 etcd-initial-cluster-state: "new"
 etcd-initial-cluster-token: ""
